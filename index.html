@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Immortality Starts with Farming</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="overlay" hidden ></div>
+    <div id="overlay2" hidden></div>
+
+    <div id="death" hidden>
+        <h1>You Have Died</h1>
+        <div id="changes" class="green">
+        </div>
+        <button id="rebirth">Rebirth</button>
+    </div>
+    <div id="lore-container" hidden>
+        <H6 id="lore-text"></H6>
+        <div id="lore-gain"></div>
+        <button id="exit-lore">Continue</button>     
+    </div>
+    <div id="old-lore" hidden>
+        <H2>Lore</H2>
+        <button id="exit-old-lore">Exit</button>
+    </div>
+    <div id="settings" hidden>
+        <button id="save-button">Save</button>
+        <div id="import-export">
+            <button id="export-button">Export</button>
+            <button id="import-button">Import</button>
+        </div>       
+        <span id="hint" hidden>Hint: (click to reveal)</span>      
+    </div>
+    <div id="export-container" hidden>
+        <h3>Export</h3>
+        <div id="export-second">
+            <button id="to-clipboard">To clipboard</button>
+            <button id="to-file">To file</button>
+        </div>
+    </div>
+    <div id="import-container" hidden>
+        <h3>Import</h3>
+        <div id="import-second">
+            <button id="from-clipboard">From clipboard</button>
+            <button id="from-file">From file</button>
+            <button id="reset-data">RESET DATA</button>
+        </div>
+    </div>
+
+    <div id="game-container">
+        <div id="name-container">
+            <h3>Immortality Starts with Farming</h3>
+        </div>
+        <div id="top-buttons">
+            <!--<button id="pause-button" class="speed-button"><i class="fa-solid fa-play" id="pause-icon"></i></button>-->
+            <button class="top-button" id="pause-button"><i class="fa-solid fa-pause"></i></button>
+            <button class="top-button" id="play-button"><i class="fa-solid fa-play"></i></button>
+            <button class="top-button" id="2x-button">2x</button>
+            <button class="top-button" id="5x-button">5x</button>
+            <button class="top-button" id="filler">0</button>
+            <button class="top-button no-border" id="lore-button"><i class="fa-solid fa-book"></i></button>
+            <button class="top-button no-border" id="settings-button"><i class="fa-solid fa-gear"></i></button>
+        </div>
+        <div id="character-info">
+            <div id="stat-container">
+                <h2>Character</h2>
+
+                <div class="stat-row">
+                    <h4>Age</h4>
+                    <span id="age-value">6</span>
+                </div>
+                <div class="stat-row">
+                    <h4>Comfort</h4>
+                    <span id="comfort-value">1</span>
+                </div>
+                <div class="stat-row" id="coin-row" hidden>
+                    <h4>Coins</h4>
+                    <span id="coin-value">0</span>
+                </div>
+                <div class="stat-row" id="body-row">
+                    <h4>Body</h4>
+                    <span id="body-value">3</span>
+                    <div id="body-bar">
+                        <div id="body-bar-fill"></div>
+                    </div>
+                </div>
+                <div class="stat-row" id="spirit-row" hidden>
+                    <h4>Spirit</h4>
+                    <span id="spirit-value">0</span>
+                    <div id="spirit-bar">
+                        <div id="spirit-bar-fill"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="skill-container">
+                <h2>Skills</h2>
+                <div class="skill-row">
+                    <h4>Farming</h4>
+                    <span id="farming-value">1 / 1</span>
+                </div>
+            </div>
+        </div>
+       
+        <div id="action-container">
+            <div id="active-action">
+                <h2>Active Action</h2>
+                <div id="active-container">
+                    <span id="active-name">Name</span>
+                    <span id="active-skill">Skill</span>
+                    <div id="experience-container">
+                        <span id="experience-name">Experience</span>
+                        <span id="experience-percent">1 / 100</span>
+                        <div id="experience-bar">
+                            <div id="experience-bar-fill"></div>
+                        </div>
+                    </div>
+                    <div id="knowledge-container">
+                        <span id="knowledge-name">Knowledge</span>
+                        <span id="knowledge-percent">1 / 100</span>
+                        <div id="knowledge-bar">
+                            <div id="knowledge-bar-fill"></div>
+                        </div>
+                    </div>
+                    
+                    
+
+                </div>
+                
+            </div>
+            <div id="action-list">
+                <h2>Available Actions</h2>
+            </div>
+        </div>
+        <div id="shop-container" hidden>
+            <h2>Shop</h2>
+            <div id="supplies">
+                <h3>Supplies</h3>
+                <button class="supplies-button" id="supplies-button1" hidden>
+                    <span class="supplies-heading">Buy Basic Supplies</span>
+                    <div class="supplies-info">
+                        <span class="green">+Comfort</span>
+                        <span class="red">-1 coin / 30 days</span>
+                    </div>
+                    
+                </button>
+                <button class="supplies-button" id="supplies-button2" hidden>
+                    <span class="supplies-heading">Buy Quality Supplies</span>
+                    <div class="supplies-info">
+                        <div id="supplies-format1">
+                            <span class="green">+Comfort</span>
+                            <span class="green">+Body</span>
+                            <span class="green">+Experience</span>
+                        </div>
+                        <div id="supplies-format2">
+                            <span class="green">+Knowledge</span>                        
+                            <span class="red">-1 coin / 1 day</span>
+                        </div>
+                        
+                    </div>
+                    
+                </button>
+            </div>
+            <div id="upgrade-list">
+                <h3>Upgrades</h3>
+            </div>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/4117ee2e27.js" crossorigin="anonymous"></script>
+    <script type="module" src="./js/main.js"></script>
+</body>
+</html>
