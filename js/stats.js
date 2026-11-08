@@ -66,18 +66,18 @@ export function updateStats(game){
     const experienceMult = (skill.experienceLevel + 2) / 2 * (skill.knowledgeLevel + 1) * bodyMult * skill.experienceUpgrade;
     skill.experience += action.experienceGain * experienceMult * supplies2Mult * spiritMult * game.globalMult;
     // Knowledge
-    const knowledgeMult = (skill.experienceLevel + 2) / 2 * skill.knowledgeUpgrade;
+    const knowledgeMult = (skill.experienceLevel + 1) * skill.knowledgeUpgrade;
     skill.knowledge += action.knowledgeGain * knowledgeMult * supplies2Mult * game.globalMult;
     // Coins
     const coinExMult = skill.experienceLevel - action.startCoinGain <= 2 ? 
     (skill.experienceLevel - action.startCoinGain) / 2 + 1 : 
     (skill.experienceLevel - action.startCoinGain - 2) / 4 + 2 
-    const synergyCoinMult = game.flags.unlockSynergy.value && skill !== game.skills.trading && game.skills.trading.knowledgeLevel >= 10
+    const synergyCoinMult = game.flags.unlockSynergy.value && skill !== game.skills.trading && game.skills.trading.knowledgeLevel >= 8
     ? 1 + (game.skills.trading.experienceLevel / 20) : 1;
     const coinMult = action.coinGain >= 0 ? coinExMult * synergyCoinMult * bodyMult * skill.coinUpgrade : 1;
     if (skill.experienceLevel >= action.startCoinGain) game.coin += action.coinGain * coinMult * game.globalMult;
     // Body
-    const synergyBodyMult = game.flags.unlockSynergy.value && skill !== game.skills.fighting && game.skills.fighting.knowledgeLevel >= 10
+    const synergyBodyMult = game.flags.unlockSynergy.value && skill !== game.skills.fighting && game.skills.fighting.knowledgeLevel >= 8
     ? 1 + (game.skills.fighting.experienceLevel / 20) : 1;
     const bodyCap20 = !game.flags.uncapBody20.value && game.bodyLevel === 20 ? 0 : 1;
     const bodyCap20Mult = game.flags.uncapBody20.value ? 1.5 : 1
@@ -85,7 +85,7 @@ export function updateStats(game){
     if (game.age < game.startDeath) game.body += action.bodyGain * bodyGainMult * game.globalMult;
     // Spirit
     const spiritGainMult = (game.skills.meditating.experienceLevel + 2) / 2 * skill.spiritUpgrade * getSpiritMult(game);
-    game.spirit += action.spiritGain * spiritGainMult * game.globalMult
+    game.spirit += action.spiritGain * spiritGainMult * supplies2Mult * game.globalMult
    
 }
 
@@ -145,7 +145,7 @@ export function decreaseHealth(game){
     let loseHealth = 0;
 
     const bodyAdd = (game.bodyLevel - 10) * 2;
-    const farmingAdd = game.flags.unlockSynergy.value && game.skills.farming.knowledgeLevel >= 10
+    const farmingAdd = game.flags.unlockSynergy.value && game.skills.farming.knowledgeLevel >= 8
     ? game.skills.farming.experienceLevel : 0;
     game.startDeath = (50 + bodyAdd + farmingAdd) * 365;
 
@@ -162,7 +162,7 @@ export function decreaseHealth(game){
 
         if(game.healthLost >= 100){
 
-            console.log(`${game.lives} age ${Math.floor(game.age / 365)} body ${game.bodyLevel} spirit ${game.spiritLevel} coins ${Math.floor(game.coin)} farming ${game.skills.farming.experienceLevel} / ${game.skills.farming.knowledgeLevel} smithing ${game.skills.smithing.experienceLevel} / ${game.skills.smithing.knowledgeLevel} fighting ${game.skills.fighting.experienceLevel} / ${game.skills.fighting.knowledgeLevel}  exploring ${game.skills.exploring.experienceLevel} / ${game.skills.exploring.knowledgeLevel} trading ${game.skills.trading.experienceLevel} / ${game.skills.trading.knowledgeLevel} meditating ${game.skills.meditating.experienceLevel} / ${game.skills.meditating.knowledgeLevel} `)
+            console.log(`${game.lives} age ${Math.floor(game.age / 365)} body ${game.bodyLevel + 5} spirit ${game.spiritLevel} coins ${Math.floor(game.coin)} farming ${game.skills.farming.experienceLevel} / ${game.skills.farming.knowledgeLevel} smithing ${game.skills.smithing.experienceLevel} / ${game.skills.smithing.knowledgeLevel} fighting ${game.skills.fighting.experienceLevel} / ${game.skills.fighting.knowledgeLevel}  exploring ${game.skills.exploring.experienceLevel} / ${game.skills.exploring.knowledgeLevel} trading ${game.skills.trading.experienceLevel} / ${game.skills.trading.knowledgeLevel} meditating ${game.skills.meditating.experienceLevel} / ${game.skills.meditating.knowledgeLevel} `)
             
             game.isPaused = true;
             game.isDead = true;

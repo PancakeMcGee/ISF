@@ -73,17 +73,17 @@ export const lores = {
         gain: ["New Mechanic"],
     }),
     synergyFarming: new Lore({
-        requirement: (game) => game.flags.unlockSynergy.value && game.skills.farming.knowledgeLevel >= 10,
+        requirement: (game) => game.flags.unlockSynergy.value && game.skills.farming.knowledgeLevel >= 8,
         text: "Your years on a farm have taught you a lot about plants. You know which plants cure illness or ease aching bones. As your farming experience grows, so will your life expectancy.",
         gain: ["New Mechanic"],
     }),
     synergySmithing: new Lore({
-        requirement: (game) => game.flags.unlockSynergy.value && game.skills.smithing.knowledgeLevel >= 10,
+        requirement: (game) => game.flags.unlockSynergy.value && game.skills.smithing.knowledgeLevel >= 8,
         text: "You have spent many lives toiling in the hot forge, and your time has not been wasted. Your craftsmanship exceeds most others. <br> <br> Instead of spending coins on tools and weapons, you buy the materials and forge them yourself, creating items of far greater quality.",
         gain: ["New Mechanic"],
     }),
     synergyFighting: new Lore({
-        requirement: (game) => game.flags.unlockSynergy.value && game.skills.fighting.knowledgeLevel >= 10,
+        requirement: (game) => game.flags.unlockSynergy.value && game.skills.fighting.knowledgeLevel >= 8,
         text: "Your time as a member and commander of the watch has taught you much about strength and the human body. You take this experience and bring it to your other walks in life, increasing the rate your body grows, even when swinging a hammer or scythe, instead of a sword.",
         gain: ["New Mechanic"],
     }),
@@ -98,7 +98,7 @@ export const lores = {
         gain: ["Body Uncapped"],
     }),
     spiritUnlock: new Lore({
-        requirement: (game) => game.skills.farming.knowledgeLevel >= 12,
+        requirement: (game) => game.skills.farming.experienceLevel >= 12,
         text: "You sit in your field and reflect on how far you’ve come. As you reminisce, a strange calm rushes over you and you fall into a trance. <br> <br> When you awaken, several days have passed. You feel an intense connection to yourself and your spirit. ",
         gain: ["New Trait"],
     }),
@@ -146,6 +146,21 @@ export const lores = {
         requirement: (game) => game.age >= 16 * 365 && game.bodyLevel >= 18 && game.skills.fighting.knowledgeLevel >= 8,
         text: "The boundary has grown boring. What was once new and exciting has grown predictable and mundane. You set your sights on the deeper woods and greater challenges. Providing of course your body and fighting skills can keep up.",
         gain: ["New Action"],
+    }),
+    tradingUnlock1: new Lore({
+        requirement: (game) => game.skills.trading.knowledgeLevel >= 4,
+        text: "Your foray into the market has left you with new connections and access to unobtainable goods. You can now buy an artifact to help you meditate",
+        gain: ["New Upgrade"],
+    }),
+    tradingUnlock2: new Lore({
+        requirement: (game) => game.skills.trading.knowledgeLevel >= 6,
+        text: "Your connections grow. You can now buy higher quality supplies to improve your everyday life. Your new lifestyle also brings about an increase in how quickly you learn and grow, at least for as long as you can afford it.",
+        gain: ["New Supplies"],
+    }),
+    tradingUnlock3: new Lore({
+        requirement: (game) => game.skills.trading.knowledgeLevel >= 8,
+        text: "Your knowledge of the market has grown. Your connections outside your humble home grant you access to a higher tier of the market. You can now spend coin to further improve some of your original skills.",
+        gain: ["New Upgrades"],
     }),
 
 

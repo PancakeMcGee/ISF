@@ -36,7 +36,13 @@ function gamePause(game){
     const action = game?.activeAction;
     if (!action) return;
 
-    if (!action.unlocked || game.coin + action.coinGain * game.globalMult < 0){
+    let suppliesCost = 0;
+    if (game.buySupplies1) suppliesCost += 1/30;
+    if (game.buySupplies2) suppliesCost += 1;
+
+
+
+    if (!action.unlocked || game.coin + (action.coinGain - suppliesCost)  * game.globalMult < 0){
         game.isPaused = true;
         game.activeAction = null;
 
@@ -77,6 +83,8 @@ function gamePause(game){
         drawSupplies2(game);
 
     }
+
+    unlock();
 }
 
 export function update() {

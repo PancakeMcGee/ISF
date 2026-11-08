@@ -34,19 +34,9 @@ export const game = { ... initialGame}
 
 
 
-const startingGame = {
-    spiritLevel: game.spiritLevel,
-    skills: Object.fromEntries(
-        Object.entries(game.skills).map(([key, skill]) => [
-            key, 
-            {
-                name: skill.name,
-                knowledgeLevel: skill.knowledgeLevel
-            },
-           
-        ])
-    )
-}
+const startingGame = {};
+
+recordStartingGame();
 
 export function recordStartingGame(){
     startingGame.spiritLevel = game.spiritLevel;
@@ -77,9 +67,6 @@ export function getGameChanges(){
         if (knowledgeChange >= 1) changes.push(`+${knowledgeChange} ${skill.name} Knowledge`);
 
     }
-
-    console.log("test")
-
     return changes;
 }
 

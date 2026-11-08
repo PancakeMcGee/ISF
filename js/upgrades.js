@@ -37,7 +37,7 @@ const farmingUpgrade1 = new Upgrade({
     skill: "farming",
     experienceMult: 1.5,
     knowledgeMult: 1.2,
-    coinMult: 2,
+    coinMult: 1.5,
     smithingSynergy: true,
     coinCost: 50,
     unlockReq: (game) => game.skills.farming.experienceLevel >= 2,
@@ -49,7 +49,7 @@ const farmingUpgrade2 = new Upgrade({
     skill: "farming",
     experienceMult: 1.5,
     knowledgeMult: 1.2,
-    coinMult: 1.5,
+    coinMult: 1.2,
     coinCost: 200,
     unlockReq: (game) => farmingUpgrade1.bought && game.skills.farming.experienceLevel >= 4,
 })
@@ -60,7 +60,7 @@ const farmingUpgrade3 = new Upgrade({
     skill: "farming",
     experienceMult: 1.5,
     knowledgeMult: 1.2,
-    coinMult: 1.5,
+    coinMult: 1.2,
     coinCost: 600,
     unlockReq: (game) => farmingUpgrade2.bought && game.skills.farming.experienceLevel >= 6,
 })
@@ -223,7 +223,7 @@ export function buyUpgrade(buttonData, game){
     
             const skill = game.skills[upgrade.skill];
     
-            const synergyMult = game.flags.unlockSynergy.value && game.skills.smithing.knowledgeLevel >= 10 && upgrade.smithingSynergy
+            const synergyMult = game.flags.unlockSynergy.value && game.skills.smithing.knowledgeLevel >= 8 && upgrade.smithingSynergy
             ? 1 + game.skills.smithing.experienceLevel * 1/25 : 1
     
             skill.experienceUpgrade *= upgrade.experienceMult * synergyMult;

@@ -23,7 +23,7 @@ export const flags = {
     }),
     unlockSynergy: new Flag({
         value: false,
-        requirement: (game) => knowledgeTotal(game) >= 30
+        requirement: (game) => knowledgeTotal(game) >= 24,
     }),
     uncapBody20: new Flag({
         value: false,
@@ -35,11 +35,11 @@ export const flags = {
     }),
     unlockMeditating: new Flag({
         value: false,
-        requirement: (game) => game.skills.farming.experienceLevel >= 12 && game.age <= 7*365,
+        requirement: (game) => game.skills.farming.experienceLevel >= 12,
     }),  
     unlockTrading: new Flag({
         value: false,
-        requirement: (game) => game.coin >= 5000,
+        requirement: (game) => game.coin >= 2500,
     }),  
     unlockSupplies2: new Flag({
         value: false,
