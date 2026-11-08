@@ -104,7 +104,7 @@ export const lores = {
     }),
     unlockMeditation: new Lore({
         requirement: (game) => game.flags.unlockMeditating.value,
-        text: "Something feels different about this life. The energy you felt at your farm has remained inside you. When you close your eyes and concentrate, you can almost touch it. <br> <br> However, you must be careful. Should you focus too much on your meditation and forget your earthly needs, you will surely suffer for it.",
+        text: "Something feels different about this life. The energy you felt at your farm has remained inside you. When you close your eyes and concentrate, you can almost touch it. Something tells you the higher your experience the faster your spirit will grow. <br> <br> However, you must be careful. Should you focus too much on your meditation and forget your earthly needs, you will surely suffer for it.",
         gain: ["New Skill", "New Action"],
     }),
     spirit1: new Lore({
